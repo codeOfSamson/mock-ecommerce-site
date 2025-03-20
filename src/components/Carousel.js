@@ -1,17 +1,19 @@
 // Carousel.js
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay } from "swiper/modules"; 
 import 'swiper/css';
 import 'swiper/css/navigation'; 
 
 const Carousel = () => {
   return (
-    <div className="relative">
+    <div className=" flex w-full h-full">
       <Swiper
+       modules={[Autoplay]} 
         spaceBetween={50}
         slidesPerView={1}
         loop={true}
-        autoplay={{ delay: 300 }}
-        className="w-full h-[80vh] md:h-[90vh]"
+        autoplay={{ delay: 3000 }}
+        className="w-full h-[90vh] md:h-[90vh]"
       >
         <SwiperSlide>
           <div className="w-full h-full bg-cover bg-center" >
@@ -20,7 +22,7 @@ const Carousel = () => {
         </SwiperSlide>
 
         <SwiperSlide>
-          <div className="w-full h-full bg-cover bg-center" >
+          <div className="w-full h-full object bg-cover bg-center" >
                 <img src={`/images/00467-845072959.png`} />
               </div>
         </SwiperSlide>

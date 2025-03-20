@@ -5,9 +5,11 @@ import Carousel from "../components/Carousel"
 export default function Home() {
   return (
     <div className="container mx-auto p-4">
-      <h1 className="text-2xl font-bold">Welcome to Our Store</h1>
-    <Carousel />
-    
+  
+      <div className="w-full max-w-4xl h-4/5 flex items-center justify-center">
+        <Carousel />
+      </div>
     </div>
+  
   );
 }
