@@ -12,7 +12,7 @@ export default function Navbar() {
     <div className="flex justify-center items-center space-x-9 text-sm font-medium">
       <Link href="/" className="hover:text-red-500 hover:underline">Home</Link>
       <Link href="/collection/all" className="hover:text-red-500 hover:underline">Collections</Link>
-      <Link href="/product" className="text-red-500 hover:text-red-700 hover:underline">A/B Testing Report</Link>
+      <Link href="/AbTesting" className="text-red-500 hover:text-red-700 hover:underline">A/B Testing Report</Link>
     </div>
     <div className="flex justify-end ">
       <CheckoutIcon totalItems={2} totalPrice={89} />
