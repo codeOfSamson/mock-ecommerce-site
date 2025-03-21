@@ -3,7 +3,7 @@ import { chromium } from 'playwright';
 export default async function scrapeWebsite() {
   const browser = await chromium.launch();
   const page = await browser.newPage();
-  await page.goto('http://localhost:3000/'); 
+  await page.goto('https://mock-ecommerce-site-alpha.vercel.app/'); 
 
   const elements = await page.evaluate(() => {
     const abTestElements = [];
