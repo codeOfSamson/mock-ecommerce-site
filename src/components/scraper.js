@@ -14,11 +14,13 @@ export default async function scrapeWebsite() {
     headers.forEach(header => abTestElements.push({ type: 'header', content: header.innerText }));
     buttons.forEach(button => abTestElements.push({ type: 'button', content: button.innerText }));
 
-    return abTestElements;
+    const uniqueData = [...new Map(abTestElements.map(item => [JSON.stringify(item), item])).values()];
+
+
+    return uniqueData;
   });
 
   await browser.close();
-  console.log(123, elements);
 
   return elements;
 }
