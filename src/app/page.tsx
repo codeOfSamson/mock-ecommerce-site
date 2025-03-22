@@ -1,13 +1,11 @@
 "use client";
-import Carousel from "../components/Carousel";
+import Navbar from "@/components/Navbar";
+import BackgroundCarousel from "@/components/BackgroundCarousel";
 
 export default function Home() {
   return (
-    <div className="relative w-full h-screen">
-   
-      <div className="absolute inset-0 -z-10">
-        <Carousel />
-      </div>
+    <div className=" relative w-full h-screen ">
+ <BackgroundCarousel />
 
       <div className="relative flex flex-col justify-center items-center text-center h-full text-white px-6">
         <h1 className="text-5xl font-bold mb-4">Timeless Style</h1>

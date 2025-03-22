@@ -3,14 +3,21 @@
 import { useParams } from "next/navigation";
 import { products } from "@/data/products";
 import Image from "next/image";
+import { useCart } from "../../context/CartContext"
 
 export default function ProductPage() {
-  const params = useParams(); 
+  const params = useParams();
   const product = products[parseInt(params.id as string)];
+  const { totalPrice, setTotalPrice, itemsCount, setItemsCount } = useCart();
 
   if (!product) {
     return <div className="p-4 text-red-500">Product not found</div>;
   }
+
+  const addToCart = () => {
+    setItemsCount((prev) => prev + 1);
+    setTotalPrice((prev) => prev + product.price);
+  };
 
   return (
     <div className="container mx-auto p-4">
@@ -24,7 +31,7 @@ export default function ProductPage() {
         />
         <h1 className="text-2xl font-bold mt-4">{product.name}</h1>
         <p className="text-lg text-gray-600">${product.price.toFixed(2)}</p>
-        
+
         <div className="mt-4">
           <h2 className="text-lg font-semibold">Available Colors:</h2>
           <div className="flex gap-2 mt-2">
@@ -38,6 +45,13 @@ export default function ProductPage() {
           <h2 className="text-lg font-semibold">Available Sizes:</h2>
           <p>{product.size.join(", ")}</p>
         </div>
+
+        <button
+          onClick={addToCart}
+          className="mt-6 w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded transition"
+        >
+          Add to Cart
+        </button>
       </div>
     </div>
   );

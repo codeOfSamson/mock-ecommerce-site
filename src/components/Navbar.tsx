@@ -1,9 +1,12 @@
 "use client";  
 import Link from "next/link";
 import CheckoutIcon from "./CheckoutIcon"
+import { useCart } from "@/app/context/CartContext";
 
 
 export default function Navbar() {
+  const { totalPrice, itemsCount } = useCart();
+
   return (
 
   
@@ -14,8 +17,8 @@ export default function Navbar() {
       <Link href="/collection/all" className="hover:text-red-500 hover:underline">Collections</Link>
       <Link href="/AbTesting" className="text-red-500 hover:text-red-700 hover:underline">A/B Testing Report</Link>
     </div>
-    <div className="flex justify-end ">
-      <CheckoutIcon totalItems={2} totalPrice={89} />
+    <div className="flex justify-end " onClick={()=>{alert('This would lead to a hamburger menu with items and link to go to check out page in paid app ;)')}}>
+      <CheckoutIcon totalItems={itemsCount} totalPrice={totalPrice} />
     </div>
   </nav>
   );

@@ -9,7 +9,7 @@ interface CartIconProps {
 
 export default function CartIcon({ totalItems, totalPrice }: CartIconProps) {
   return (
-    <Link href="/cart" className="relative flex items-center space-x-2 p-2">
+    <Link href="/" className="relative flex items-center space-x-2 p-2">
       <ShoppingCart className="w-6 h-6 text-white" />
 
       <div className="text-sm text-white">
