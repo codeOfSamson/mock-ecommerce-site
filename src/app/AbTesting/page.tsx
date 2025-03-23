@@ -10,7 +10,6 @@ export default function AbTesting() {
     async function fetchAbTestDataAnalysis() {
       const response = await fetch("/api/scrape"); 
       const data = await response.json();
-      console.log(data)
       const {mockAbTestData, scrapedHomePageElements} = data
       setTestData(mockAbTestData.ab_test_suggestions);
       setScrapedElements(scrapedHomePageElements);

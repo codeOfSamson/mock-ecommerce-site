@@ -4,10 +4,16 @@ import { useState } from "react";
 import { products } from "@/data/products";
 import Link from "next/link";
 import Image from "next/image";
+import { useParams } from "next/navigation";
+
 
 export default function CollectionPage() {
   const categories = ["All", ...new Set(products.map((p) => p.collection))];
   const [selectedCategory, setSelectedCategory] = useState("All");
+
+  const params = useParams();
+  const category = decodeURIComponent(params["category"] as string);
+
 
   const filteredProducts = selectedCategory === "All" 
     ? products 

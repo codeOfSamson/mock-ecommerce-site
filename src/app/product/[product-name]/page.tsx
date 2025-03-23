@@ -9,7 +9,6 @@ export default function ProductPage() {
   const params = useParams();
   const productName = decodeURIComponent(params["product-name"] as string);
 
-  // Find product by name
   const product = products.find((p) => p.name.toLowerCase() === productName.toLowerCase());
 
   const { totalPrice, setTotalPrice, itemsCount, setItemsCount } = useCart();

@@ -5,7 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import CheckoutIcon from "./CheckoutIcon";
 import { useCart } from "@/app/context/CartContext";
-import { products } from "@/data/products"; // Import product data
+import { products } from "@/data/products";
 
 export default function Navbar() {
   const { totalPrice, itemsCount } = useCart();
@@ -15,12 +15,10 @@ export default function Navbar() {
   const [searchQuery, setSearchQuery] = useState("");
   const [filteredProducts, setFilteredProducts] = useState<any[]>([]);
 
-  // Handle search input change
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     const query = e.target.value.toLowerCase();
     setSearchQuery(query);
 
-    // Filter products by name
     if (query.length > 0) {
       const filtered = products.filter((product) =>
         product.name.toLowerCase().includes(query)
@@ -31,7 +29,6 @@ export default function Navbar() {
     }
   };
 
-  // Handle product selection
   const handleSelectProduct = (productName: string) => {
     setSearchQuery("");
     setFilteredProducts([]);
@@ -42,7 +39,6 @@ export default function Navbar() {
     <nav className="fixed top-0 left-0 w-full p-4 bg-gray-800 text-white flex justify-between items-center shadow-md z-50">
       <h3 className="flex items-center">Mock eCommerce Site</h3>
 
-      {/* Search Bar */}
       <div className="relative">
         <input
           type="text"
@@ -57,12 +53,11 @@ export default function Navbar() {
           className="border p-2 rounded-md w-64 text-black"
         />
 
-        {/* Autocomplete Dropdown */}
         {filteredProducts.length > 0 && (
           <ul className="absolute left-0 mt-1 w-64 bg-white text-black border rounded-md shadow-md">
-            {filteredProducts.map((product) => (
+            {filteredProducts.map((product, i) => (
               <li
-                key={product.id}
+                key={i}
                 className="p-2 hover:bg-gray-200 cursor-pointer"
                 onClick={() => handleSelectProduct(product.name)}
               >
@@ -81,8 +76,8 @@ export default function Navbar() {
           Home
         </Link>
         <Link 
-          href="/collection/all" 
-          className={`hover:text-red-500 hover:underline ${pathname === "/collection/all" ? "text-red-500 underline" : ""}`}
+          href="/collections/all" 
+          className={`hover:text-red-500 hover:underline ${pathname === "/collections/all" ? "text-red-500 underline" : ""}`}
         >
           Collections
         </Link>
