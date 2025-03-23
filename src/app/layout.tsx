@@ -5,7 +5,7 @@ import { CartProvider } from "@/app/context/CartContext"
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body>
+      <body className="pt-20">
         <CartProvider> 
           <Navbar />
           {children}

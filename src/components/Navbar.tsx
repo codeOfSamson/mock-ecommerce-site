@@ -1,25 +1,102 @@
-"use client";  
+"use client";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
-import CheckoutIcon from "./CheckoutIcon"
+import { usePathname } from "next/navigation";
+import CheckoutIcon from "./CheckoutIcon";
 import { useCart } from "@/app/context/CartContext";
-
+import { products } from "@/data/products"; // Import product data
 
 export default function Navbar() {
   const { totalPrice, itemsCount } = useCart();
+  const pathname = usePathname();
+  const router = useRouter();
+
+  const [searchQuery, setSearchQuery] = useState("");
+  const [filteredProducts, setFilteredProducts] = useState<any[]>([]);
+
+  // Handle search input change
+  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const query = e.target.value.toLowerCase();
+    setSearchQuery(query);
+
+    // Filter products by name
+    if (query.length > 0) {
+      const filtered = products.filter((product) =>
+        product.name.toLowerCase().includes(query)
+      );
+      setFilteredProducts(filtered);
+    } else {
+      setFilteredProducts([]);
+    }
+  };
+
+  // Handle product selection
+  const handleSelectProduct = (productName: string) => {
+    setSearchQuery("");
+    setFilteredProducts([]);
+    router.push(`/product/${encodeURIComponent(productName)}`);
+  };
 
   return (
+    <nav className="fixed top-0 left-0 w-full p-4 bg-gray-800 text-white flex justify-between items-center shadow-md z-50">
+      <h3 className="flex items-center">Mock eCommerce Site</h3>
 
-  
-    <nav className=" flex p-4 bg-gray-800 text-white justify-between ">
-    <h3 className=" flex items-center">Mock eCommerce Site</h3>
-    <div className="flex justify-center items-center space-x-9 text-sm font-medium">
-      <Link href="/" className="hover:text-red-500 hover:underline">Home</Link>
-      <Link href="/collection/all" className="hover:text-red-500 hover:underline">Collections</Link>
-      <Link href="/AbTesting" className="text-red-500 hover:text-red-700 hover:underline">A/B Testing Report</Link>
-    </div>
-    <div className="flex justify-end " onClick={()=>{alert('This would lead to a hamburger menu with items and link to go to check out page in paid app ;)')}}>
-      <CheckoutIcon totalItems={itemsCount} totalPrice={totalPrice} />
-    </div>
-  </nav>
+      {/* Search Bar */}
+      <div className="relative">
+        <input
+          type="text"
+          placeholder="Search products..."
+          value={searchQuery}
+          onChange={handleSearch}
+          onKeyDown={(e) => {
+            if (e.key === "Enter" && filteredProducts.length > 0) {
+              handleSelectProduct(filteredProducts[0].name);
+            }
+          }}
+          className="border p-2 rounded-md w-64 text-black"
+        />
+
+        {/* Autocomplete Dropdown */}
+        {filteredProducts.length > 0 && (
+          <ul className="absolute left-0 mt-1 w-64 bg-white text-black border rounded-md shadow-md">
+            {filteredProducts.map((product) => (
+              <li
+                key={product.id}
+                className="p-2 hover:bg-gray-200 cursor-pointer"
+                onClick={() => handleSelectProduct(product.name)}
+              >
+                {product.name}
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
+
+      <div className="flex justify-center items-center space-x-9 text-sm font-medium">
+        <Link 
+          href="/" 
+          className={`hover:text-red-500 hover:underline ${pathname === "/" ? "text-red-500 underline" : ""}`}
+        >
+          Home
+        </Link>
+        <Link 
+          href="/collection/all" 
+          className={`hover:text-red-500 hover:underline ${pathname === "/collection/all" ? "text-red-500 underline" : ""}`}
+        >
+          Collections
+        </Link>
+        <Link 
+          href="/AbTesting" 
+          className={`hover:text-red-500 hover:underline ${pathname === "/AbTesting" ? "text-red-500 underline" : ""}`}
+        >
+          A/B Testing Report
+        </Link>
+      </div>
+
+      <div className="flex justify-end cursor-pointer">
+        <CheckoutIcon totalItems={itemsCount} totalPrice={totalPrice} />
+      </div>
+    </nav>
   );
 }

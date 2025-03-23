@@ -6,11 +6,12 @@ import Link from "next/link";
 import Image from "next/image";
 
 export default function CollectionPage() {
-  const categories = [...new Set(products.map((p) => p.collection))];
+  const categories = ["All", ...new Set(products.map((p) => p.collection))];
+  const [selectedCategory, setSelectedCategory] = useState("All");
 
-  const [selectedCategory, setSelectedCategory] = useState(categories[0] || "");
-
-  const filteredProducts = products.filter((p) => p.collection === selectedCategory);
+  const filteredProducts = selectedCategory === "All" 
+    ? products 
+    : products.filter((p) => p.collection === selectedCategory);
 
   return (
     <div className="container mx-auto p-4">
@@ -22,7 +23,7 @@ export default function CollectionPage() {
           id="category"
           value={selectedCategory}
           onChange={(e) => setSelectedCategory(e.target.value)}
-          className="border p-2 rounded w-full max-w-xs"
+          className="border p-2 rounded w-full max-w-xs text-black"
         >
           {categories.map((category) => (
             <option key={category} value={category}>
@@ -32,7 +33,6 @@ export default function CollectionPage() {
         </select>
       </div>
 
-    
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
         {filteredProducts.length > 0 ? (
           filteredProducts.map((product, index) => (
