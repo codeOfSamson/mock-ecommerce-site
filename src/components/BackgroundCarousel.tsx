@@ -26,8 +26,9 @@ export default function BackgroundCarousel() {
           key={i}
           src={src}
           alt={`Background ${i}`}
-          layout="fill"
-          objectFit="cover"
+          fill
+          priority
+          style={{ objectFit: "cover" }} 
           className={`absolute inset-0 transition-opacity duration-1000 ${
             i === index ? "opacity-100" : "opacity-0"
           }`}
