@@ -3,6 +3,9 @@ import chromiumAWS from "@sparticuz/chromium";
 
 export default async function scrapeWebsite() {
   const isVercel = process.env.VERCEL === "1"; 
+
+  console.log("🚀 Running on Vercel?", isVercel);
+
   const browser = await chromium.launch({
     headless: true,
     executablePath: isVercel ? await chromiumAWS.executablePath() : undefined, 
