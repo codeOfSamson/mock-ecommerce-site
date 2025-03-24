@@ -23,6 +23,12 @@ This is a mock eCommerce site built with **Next.js**, **Tailwind CSS**, and a **
 
 ---
 
+## **Deployments**
+
+- Deployed on Verecel following their site doc:https://vercel.com/docs/deployments
+
+---
+
 ## **Installation & Setup**
 
 ### **1. Clone the repository:**
@@ -38,6 +44,8 @@ npm install
 
 npm run dev
 The site will be available at http://localhost:3000
+
+---
 
 ### **API Endpoints:**
 
@@ -58,6 +66,8 @@ Response:
 ]
 }
 (For this section you will find, I hardcoded an API response becasue I didnt have an account for OpenAI and didnt want to be charged. I still left the openAI code in the project commented out, so it could be easily implementd in the future. For this mock projject I took my site's scraped data and asked chatGPT to give me a mock API response analyzing the data. )
+
+---
 
 ### **Contributors**
 
