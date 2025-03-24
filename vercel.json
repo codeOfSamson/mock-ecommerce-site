@@ -1,0 +1,9 @@
+{
+    "functions": {
+      "api/scrape": {
+        "runtime": "nodejs18.x",
+        "memory": 1024
+      }
+    }
+  }
+ 
