@@ -49,7 +49,7 @@ The site will be available at http://localhost:3000
 
 ### **API Endpoints:**
 
-1. Scrape Website Data
+1. Scrape Website for A/B testing Data
 
 Endpoint: /api/scrape
 Method: GET
@@ -57,11 +57,11 @@ Method: GET
 {
 -"ab_test_suggestions": [
 {
--"element": "Header",
--"current": "Timeless Style",
--"variations": ["Effortless Elegance", "Classic & Modern"],
--"reason": "Testing different wording to see which resonates more with users.",
--"html": "`<h1>Timeless Style</h1>`"
+"element": "Header",
+"current": "Timeless Style",
+"variations": ["Effortless Elegance", "Classic & Modern"],
+"reason": "Testing different wording to see which resonates more with users.",
+"html": "`<h1>Timeless Style</h1>`"
 }
 ]
 }
