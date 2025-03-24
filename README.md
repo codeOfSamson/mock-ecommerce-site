@@ -1,37 +1,64 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Mock eCommerce Site
 
-## Getting Started
+## **Overview**
 
-First, run the development server:
+This is a mock eCommerce site built with **Next.js**, **Tailwind CSS**, and a **Cart System** using React. The site includes:
 
-```bash
+- A product collection page with category filtering
+- An simplified interactive shopping cart that tracks items and total price
+- A search bar to search products by name
+- Product page to view more details of a particular product i.e available colors and sizes and add to cart button.
+- An A/B Testing Report section analyzing site's elements and utilizing AI to suggest A/B testing alternatives.
+- A backend API to scrape and analyze website data
+- Fixed, dynamic navbar with active link styling
+
+---
+
+## **Tech Stack**
+
+- **Frontend**: React, Next.js, Tailwind CSS
+- **State Management**: React Context API
+- **Backend**: Node.js, Express
+- **Web Scraping**: Playwright
+
+---
+
+## **Installation & Setup**
+
+### **1. Clone the repository:**
+
+git clone https://github.com/yourusername/mock-ecommerce.git
+cd mock-ecommerce
+
+### **2. Install Dependencies:**
+
+npm install
+
+### **3. Run the Dev server:**
+
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+The site will be available at http://localhost:3000
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### **API Endpoints:**
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. Scrape Website Data
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Endpoint: /api/scrape
+Method: GET
+Response:
+{
+"ab_test_suggestions": [
+{
+"element": "Header",
+"current": "Timeless Style",
+"variations": ["Effortless Elegance", "Classic & Modern"],
+"reason": "Testing different wording to see which resonates more with users.",
+"html": "<h1>Timeless Style</h1>"
+}
+]
+}
+(For this section you will find, I hardcoded an API response becasue I didnt have an account for OpenAI and didnt want to be charged. I still left the openAI code in the project commented out, so it could be easily implementd in the future. For this mock projject I took my site's scraped data and asked chatGPT to give me a mock API response analyzing the data. )
 
-## Learn More
+### **Contributors**
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-# mock-ecommerce-site
+Sam Flavin – Developer
