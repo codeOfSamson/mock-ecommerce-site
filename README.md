@@ -61,11 +61,11 @@ Response:
 "current": "Timeless Style",
 "variations": ["Effortless Elegance", "Classic & Modern"],
 "reason": "Testing different wording to see which resonates more with users.",
-"html": "<h1>Timeless Style</h1>"
+"html": "`<h1>Timeless Style</h1>`"
 }
 ]
 }
-(For this section you will find, I hardcoded an API response becasue I didnt have an account for OpenAI and didnt want to be charged. I still left the openAI code in the project commented out, so it could be easily implementd in the future. For this mock projject I took my site's scraped data and asked chatGPT to give me a mock API response analyzing the data. )
+(For this section you will find, I built the A/B testing engine into the site itself for convenience instead of creating another project... I also hardcoded an API response becasue I didnt have an account for OpenAI and didnt want to be charged. I still left the openAI code in the project commented out, so it could be easily implementd in the future. I took my site's scraped data and asked chatGPT to give me a mock API response analyzing the data. )
 
 ---
 
