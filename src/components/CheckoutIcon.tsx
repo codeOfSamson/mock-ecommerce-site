@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { ShoppingCart } from "lucide-react"; // Icon from lucide-react
+import { ShoppingCart } from "lucide-react"; 
 
 interface CartIconProps {
   totalItems: number;

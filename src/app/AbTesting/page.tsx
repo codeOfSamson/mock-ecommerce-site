@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 
 export default function AbTesting() {
   const [testData, setTestData] = useState<any[]>([]);
-  const [scrapedElements, setScrapedElements] = useState<any[]>([]);
 
   useEffect(() => {
  
@@ -12,7 +11,6 @@ export default function AbTesting() {
       const data = await response.json();
       const {mockAbTestData, scrapedHomePageElements} = data
       setTestData(mockAbTestData.ab_test_suggestions);
-      setScrapedElements(scrapedHomePageElements);
     }
     fetchAbTestDataAnalysis();
 
