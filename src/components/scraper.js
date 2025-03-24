@@ -5,9 +5,7 @@ export default async function scrapeWebsite() {
   try {
     const isVercel = process.env.VERCEL === "1";
 
-    console.log("🚀 Running on Vercel?", isVercel);
 
-    // Ensure Chromium is properly loaded
     const executablePath = isVercel ? await chromiumAWS.executablePath() : undefined;
     console.log("🛠 Chromium executable path:", executablePath);
 
@@ -18,7 +16,6 @@ export default async function scrapeWebsite() {
 
     console.log("✅ Browser launched successfully!");
 
-    // Double-check if the browser instance is valid
     if (!browser) {
       throw new Error("Failed to launch Chromium browser.");
     }
@@ -27,10 +24,9 @@ export default async function scrapeWebsite() {
 
     await page.goto("https://mock-ecommerce-site-alpha.vercel.app/", {
       waitUntil: "domcontentloaded",
-      timeout: 60000, // Increase timeout for reliability
+      timeout: 60000, 
     });
 
-    console.log("🌍 Page loaded successfully!");
 
     const elements = await page.evaluate(() => {
       const abTestElements = [];
@@ -48,14 +44,11 @@ export default async function scrapeWebsite() {
       return [...new Map(abTestElements.map((item) => [JSON.stringify(item), item])).values()];
     });
 
-    console.log("📊 Scraping successful!");
-
     await browser.close();
-    console.log("🔒 Browser closed safely.");
 
     return Response.json({ elements });
   } catch (error) {
-    console.error("❌ Playwright Error:", error);
+    console.error(" Playwright Error:", error);
     return Response.json({ error: error.message }, { status: 500 });
   }
 }
